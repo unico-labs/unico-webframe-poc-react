@@ -3,13 +3,14 @@ import React from 'react';
 import {
   UnicoCheckBuilder,
   SelfieCameraTypes,
-  SuccessPictureResponse,
-  ErrorPictureResponse,
-  SupportPictureResponse,
-  MainView,
   UnicoThemeBuilder,
-  SelfieCameraType,
+  DocumentCameraTypes,
+  CallbackCamera,
+  ErrorPictureResponse,
+  SuccessPictureResponse,
+  SupportPictureResponse,
   DocumentCameraType,
+  SelfieCameraType
 } from "unico-webframe";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     .setHtmlPopupLoading(`<div style="position: absolute; top: 45%; right: 50%; transform: translate(50%, -50%); z-index: 10; text-align: center;">Carregandooooo...</div>`)
     .build();
 
+
   const urlPathModels = `${window.location.protocol}//${window.location.host}/models`;
 
   const unicoCamera = new UnicoCheckBuilder()
@@ -36,10 +38,21 @@ function App() {
     .setResourceDirectory("/resources")
     .build();
 
-  const callbacks = {
+  function downloadURI(uri: any, name: any) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  const callbacks: CallbackCamera = {
     on: {
       success: function (obj: SuccessPictureResponse) {
-        window.alert(JSON.stringify(obj));
+        let blob = new Blob([JSON.stringify(obj.encrypted)], {type:'application/json'});
+        downloadURI(URL.createObjectURL(blob), "teste.json");
+        console.log(obj);
       },
       error: function (error: ErrorPictureResponse) {
         window.console.log(error);
@@ -61,36 +74,74 @@ function App() {
     }
   };
 
-  const openCamera = async (
-    unicoCamera: MainView,
-    jsonPath: string, type: SelfieCameraType | DocumentCameraType
+  const openSelfieCamera = async (
+    jsonPath: string,
+    cameraType: SelfieCameraType
   ) => {
     const { open } = await unicoCamera.prepareSelfieCamera(
       jsonPath,
-      type
+      cameraType
     );
 
     open(callbacks);
   }
 
-  const prepareCameraFacetec = () => {
-    openCamera(unicoCamera, '/services.json', SelfieCameraTypes.SMART);
-  }
+  const openDocumentCamera = async (
+    jsonPath: string,
+    cameraType: DocumentCameraType
+  ) => {
+    const { open } = await unicoCamera.prepareDocumentCamera(
+      jsonPath,
+      cameraType
+    );
 
-  const prepareCameraWithoutFacetec = () => {
-    openCamera(unicoCamera, '/services-sem-facetec.json', SelfieCameraTypes.SMART);
+    open(callbacks);
   }
 
   return (
-    <div id="box-camera">
-      <button type="button" onClick={prepareCameraFacetec}>
+    <main>
+      <button
+        type="button"
+        onClick={() => openSelfieCamera('/services.json', SelfieCameraTypes.NORMAL)}
+      >
         Open Camera Facetec
       </button>
 
-      <button type="button" onClick={prepareCameraWithoutFacetec}>
+      <button
+        type="button"
+        onClick={() => openSelfieCamera('/services-sem-facetec.json', SelfieCameraTypes.SMART)}
+      >
         Open Camera Sem Facetec
       </button>
-    </div>
+
+      <button
+        type="button"
+        onClick={() => openDocumentCamera('/services-sem-facetec.json', DocumentCameraTypes.CNH)}
+      >
+        Open Camera CNH
+      </button>
+
+      <button
+        type="button"
+        onClick={() => openDocumentCamera('/services-sem-facetec.json', DocumentCameraTypes.RG_FRENTE)}
+      >
+        Open Camera RG FRENTE
+      </button>
+
+      <button
+        type="button"
+        onClick={() => openDocumentCamera('/services-sem-facetec.json', DocumentCameraTypes.CPF)}
+      >
+        Open Camera RG VERSO
+      </button>
+
+
+      <div className="container">
+        <div id="box-camera">
+        </div>
+      </div>
+
+    </main>
   );
 }
 
