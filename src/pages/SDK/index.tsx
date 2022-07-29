@@ -214,10 +214,10 @@ function SDK() {
 
                 preparedCamera.openCamera(sdkCallbacks);
               }}
-              disabled={!preparedCamera.isCameraReady}
+              disabled={!preparedCamera.isCameraReady || loading}
               style={{
-                opacity: preparedCamera.isCameraReady ? 1 : 0.6,
-                cursor: preparedCamera.isCameraReady ? 'pointer': 'no-drop',
+                opacity: preparedCamera.isCameraReady && !loading ? 1 : 0.6,
+                cursor: preparedCamera.isCameraReady && !loading ? 'pointer': 'no-drop',
               }}
             >
               {loading ? (
