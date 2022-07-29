@@ -18,7 +18,6 @@ import './styles.css'
 type OpenCameraState = {
   openCamera: (callback: CallbackCamera) => void;
   cameraName: string;
-  preparing: boolean;
   isCameraReady: boolean;
   isUnicoCamera: boolean;
 }
@@ -26,6 +25,7 @@ type OpenCameraState = {
 function SDK() {
   const [preparedCamera, setPreparedCamera] = useState<OpenCameraState>({} as OpenCameraState);
   const [showBoxCamera, setShowBoxCamera] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const urlPathModels = `${window.location.protocol}//${window.location.host}/models`;
 
@@ -74,10 +74,7 @@ function SDK() {
     cameraName: string,
     isUnicoCamera: boolean,
   ) => {
-    setPreparedCamera(currentState => ({
-      ...currentState,
-      preparing: true,
-    }))
+    setLoading(true);
 
     const { open } = await unicoCamera.prepareSelfieCamera(
       jsonPath,
@@ -88,9 +85,9 @@ function SDK() {
       openCamera: open,
       isCameraReady: true,
       cameraName,
-      preparing: false,
       isUnicoCamera,
-    })
+    });
+    setLoading(false);
   }
 
   const prepareDocumentCamera = async (
@@ -99,6 +96,8 @@ function SDK() {
     cameraName: string,
     isUnicoCamera: boolean,
   ) => {
+    setLoading(true);
+
     const { open } = await unicoCamera.prepareDocumentCamera(
       jsonPath,
       cameraType
@@ -108,9 +107,9 @@ function SDK() {
       openCamera: open,
       isCameraReady: true,
       cameraName,
-      preparing: false,
       isUnicoCamera,
-    })
+    });
+    setLoading(false);
   }
 
   return (
@@ -212,7 +211,7 @@ function SDK() {
                 cursor: preparedCamera.isCameraReady ? 'pointer': 'no-drop',
               }}
             >
-              {preparedCamera.preparing ? (
+              {loading ? (
                 '...'
               ) : (
                 `OpenCamera ${preparedCamera.cameraName || ''}`
