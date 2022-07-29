@@ -27,6 +27,12 @@ function SDK() {
   const [showBoxCamera, setShowBoxCamera] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  function resetComponentStates() {
+    setPreparedCamera({} as OpenCameraState);
+    setShowBoxCamera(false);
+    setLoading(false);
+  }
+
   const urlPathModels = `${window.location.protocol}//${window.location.host}/models`;
 
   const unicoTheme = new UnicoThemeBuilder()
@@ -53,6 +59,7 @@ function SDK() {
     on: {
       success: function (obj: SuccessPictureResponse) {
         console.log(obj);
+        resetComponentStates();
       },
       error: function (error: ErrorPictureResponse) {
         window.console.log(error);
@@ -60,10 +67,12 @@ function SDK() {
             Câmera fechada
             ------------------------------------
             Motivo: ${error.code} - ${error.message} ${JSON.stringify(error.stack)}
-          `);
+        `);
+        resetComponentStates();
       },
       support: function (error: SupportPictureResponse) {
         console.log(error);
+        resetComponentStates();
       }
     }
   };
