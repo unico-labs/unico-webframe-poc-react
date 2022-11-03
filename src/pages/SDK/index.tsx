@@ -36,17 +36,17 @@ function SDK() {
   const urlPathModels = `${window.location.protocol}//${window.location.host}/models`;
 
   const unicoTheme = new UnicoThemeBuilder()
-    .setColorSilhouetteSuccess("#d98888")
+    .setColorSilhouetteSuccess("#69c62f")
     .setColorSilhouetteError("#D50000")
     .setColorSilhouetteNeutral("#fcfcfc")
     .setBackgroundColor("#e9e9e9")
-    .setColorText("#df5959")
-    .setBackgroundColorComponents("#e16060")
+    .setColorText("#1362ca")
+    .setBackgroundColorComponents("#325ad4")
     .setColorTextComponents("#dff1f5")
-    .setBackgroundColorButtons("#e55d5d")
+    .setBackgroundColorButtons("#406ee2")
     .setColorTextButtons("#dff1f5")
     .setBackgroundColorBoxMessage("#fff")
-    .setColorTextBoxMessage("#ea7474")
+    .setColorTextBoxMessage("#366fd8")
     .setHtmlPopupLoading(`<div style="position: absolute; top: 45%; right: 50%; transform: translate(50%, -50%); z-index: 10; text-align: center;">Carregandooooo...</div>`)
     .build();
   const unicoCamera = new UnicoCheckBuilder()
@@ -162,7 +162,7 @@ function SDK() {
             >
               PrepareCamera Smart
             </button>
-
+            
             <button
               type="button"
               onClick={() => {
@@ -175,6 +175,34 @@ function SDK() {
               }}
             >
               PrepareCamera Normal
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                prepareSelfieCamera(
+                  '/services-camera-traseira.json',
+                  SelfieCameraTypes.SMART,
+                  'Unico Traseira Smart',
+                  true
+                )
+              }}
+            >
+              PrepareCamera Traseira Smart
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                prepareSelfieCamera(
+                  '/services-camera-traseira.json',
+                  SelfieCameraTypes.NORMAL,
+                  'Unico Traseira Normal',
+                  true
+                )
+              }}
+            >
+              PrepareCamera Traseira Normal
             </button>
 
             <button

@@ -74,6 +74,8 @@ declare module 'unico-webframe' {
 
   export const DocumentCameraTypes: {
     CNH: DocumentCameraType;
+    CNH_FRENTE: DocumentCameraType;
+    CNH_VERSO: DocumentCameraType;
     CPF: DocumentCameraType;
     OTHERS: (description: string) => DocumentCameraType;
     RG_FRENTE: DocumentCameraType;

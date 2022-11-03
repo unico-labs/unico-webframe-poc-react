@@ -9353,10 +9353,10 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-unico-webframe@3.5.4:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/unico-webframe/-/unico-webframe-3.5.4.tgz#bbfdc7f3cb5adf5ef5255bbfa0193d312594ecb4"
-  integrity sha512-mnIfdsappko2X1DdLMt3V0I0VI9BxUeNY6aISH88Fj0B7+NJKKJnP/lbylw2waN4Ohucad62NTsmUAHzEZj6kg==
+unico-webframe@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/unico-webframe/-/unico-webframe-3.6.0.tgz#520f39f2aa0fc819c3a5d87e984c6781934fc766"
+  integrity sha512-UhpYTkS04iBymOzfdm2s4RNHq+pK+wC/ANNiZzVL0BRmJHwGA3eHN2A79xqcPueP9ancQl+muMFWKhp3wXXcJA==
   dependencies:
     crypto-es "^1.2.7"
     devtools-detector "^2.0.6"
