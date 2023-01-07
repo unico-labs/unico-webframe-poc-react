@@ -3923,10 +3923,10 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
-devtools-detector@^2.0.6:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/devtools-detector/-/devtools-detector-2.0.11.tgz#083122921bb3b0a3b2f348df2a7f51cc339f1076"
-  integrity sha512-gOimN0Sjm1XxfSHr5TpcqxpX5TTDU+PN0zt7Tkh5XGnr7NG6SulbnecahSTVc5Im1g5MtbqjBIInWVFMzMv04g==
+devtools-detector@^2.0.12:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/devtools-detector/-/devtools-detector-2.0.14.tgz#4e481cfa4768dab014fc3aca1bcbc9056bb2997d"
+  integrity sha512-lI7zNCDL+a6jusFIYG5zztJSGt6gNV+rtoDAm9Z00MhHKMHQxh58oLYLz0xlv0tFwbzl1S0Qq6P87iznwwEcGw==
   dependencies:
     compare-versions "^3.6.0"
 
@@ -6240,9 +6240,9 @@ json-stringify-safe@~5.0.1:
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
 json5@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
-  integrity sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.2.tgz#63d98d60f21b313b77c4d6da18bfa69d80e1d593"
+  integrity sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==
   dependencies:
     minimist "^1.2.0"
 
@@ -6276,6 +6276,11 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.4.0"
     verror "1.10.0"
+
+jssha@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/jssha/-/jssha-3.3.0.tgz#44b5531bcf55a12f4a388476c647a9a1cca92839"
+  integrity sha512-w9OtT4ALL+fbbwG3gw7erAO0jvS5nfvrukGPMWIAoea359B26ALXGpzy4YJSp9yGnpUvuvOw1nSjSoHDfWSr1w==
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", jsx-ast-utils@^3.2.1:
   version "3.2.1"
@@ -6621,9 +6626,9 @@ minimist@1.2.3:
   integrity sha512-+bMdgqjMN/Z77a6NlY/I3U5LlRDbnmaAk6lDveAPKwSpcPM4tKAuYsvYF8xjhOPXhOYGe/73vVLVez5PW+jqhw==
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
+  integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
 
 "mkdirp@>=0.5 0", mkdirp@^0.5.5, mkdirp@~0.5.1:
   version "0.5.5"
@@ -6943,6 +6948,13 @@ os-tmpdir@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
+
+otpauth@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/otpauth/-/otpauth-9.0.2.tgz#5f369bdeb74513fb6c0f25c5ae5ac6b3780ebc89"
+  integrity sha512-0TzpkJYg24VvIK3/K91HKpTtMlwm73UoThhcGY8fZsXcwHDrqf008rfdOjj3NnQuyuT11+vHyyO//qRzi6OZ9A==
+  dependencies:
+    jssha "~3.3.0"
 
 p-finally@^1.0.0:
   version "1.0.0"
@@ -9353,17 +9365,19 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-unico-webframe@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/unico-webframe/-/unico-webframe-3.6.0.tgz#520f39f2aa0fc819c3a5d87e984c6781934fc766"
-  integrity sha512-UhpYTkS04iBymOzfdm2s4RNHq+pK+wC/ANNiZzVL0BRmJHwGA3eHN2A79xqcPueP9ancQl+muMFWKhp3wXXcJA==
+unico-webframe@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/unico-webframe/-/unico-webframe-3.6.2.tgz#aa09b27774bfecd642cc27675629d104d168e83d"
+  integrity sha512-tq9bTmKETT5vj0Rke9TJUnW4D4yKMURkICaC15tcfAR5WGtWhohttSl0+gTTGDKdn/uS2vftr7tSSstHesiX7A==
   dependencies:
     crypto-es "^1.2.7"
-    devtools-detector "^2.0.6"
+    devtools-detector "^2.0.12"
     face-api.js "^0.22.2"
     jose-browser-runtime "^3.20.2"
+    otpauth "^9.0.2"
     platform "^1.3.6"
     postcss "^8.4.5"
+    uuid "^9.0.0"
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
@@ -9486,6 +9500,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-compile-cache@^2.0.3:
   version "2.3.0"
