@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-  UnicoCheckBuilder,
-  SelfieCameraTypes,
-  UnicoThemeBuilder,
-  DocumentCameraTypes,
   CallbackCamera,
+  DocumentCameraType,
+  DocumentCameraTypes,
   ErrorPictureResponse,
+  SDKEnvironmentTypes,
+  SelfieCameraType,
+  SelfieCameraTypes,
   SuccessPictureResponse,
   SupportPictureResponse,
-  DocumentCameraType,
-  SelfieCameraType
-} from "unico-webframe"
+  UnicoCheckBuilder,
+  UnicoThemeBuilder
+} from "unico-webframe";
 
-import '../../styles/global.css'
-import './styles.css'
+import '../../styles/global.css';
+import './styles.css';
 
 type OpenCameraState = {
   openCamera: (callback: CallbackCamera) => void;
@@ -21,6 +22,7 @@ type OpenCameraState = {
   isCameraReady: boolean;
   isUnicoCamera: boolean;
 }
+
 
 function SDK() {
   const [preparedCamera, setPreparedCamera] = useState<OpenCameraState>({} as OpenCameraState);
@@ -52,6 +54,7 @@ function SDK() {
   const unicoCamera = new UnicoCheckBuilder()
     .setTheme(unicoTheme)
     .setModelsPath(urlPathModels)
+    .setEnvironment(SDKEnvironmentTypes.UAT)
     .setResourceDirectory("/resources")
     .build();
 
