@@ -4,6 +4,8 @@ declare module 'unico-webframe' {
 
     setModelsPath(path: string): UnicoCheckBuilder;
 
+    setEnvironment(environmentType: SDKEnvironmentType): UnicoCheckBuilder;
+
     setResourceDirectory(path: string): UnicoCheckBuilder;
 
     build(): MainView;
@@ -71,7 +73,11 @@ declare module 'unico-webframe' {
     NORMAL: SelfieCameraType,
     SMART: SelfieCameraType,
   };
+  export class SDKEnvironmentType {
+    name: string
 
+    constructor(name: string)
+  }
   export const DocumentCameraTypes: {
     CNH: DocumentCameraType;
     CNH_FRENTE: DocumentCameraType;
@@ -83,6 +89,11 @@ declare module 'unico-webframe' {
     RG_FRENTE_NOVO: DocumentCameraType;
     RG_VERSO_NOVO: DocumentCameraType;
   };
+
+  export const SDKEnvironmentTypes: {
+    PROD: SDKEnvironmentType
+    UAT: SDKEnvironmentType
+  }
 
   export interface MainView {
     prepareSelfieCamera: (jsonPath: string, cameraType: SelfieCameraType) => Promise<CameraOpener>;
