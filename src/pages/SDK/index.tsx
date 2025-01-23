@@ -8,7 +8,7 @@ import {
   SelfieCameraType,
   SelfieCameraTypes,
   SuccessPictureResponse,
-  UnicoConfig,
+  SupportPictureResponse,
   UnicoCheckBuilder,
   UnicoThemeBuilder
 } from "unico-webframe";
@@ -30,20 +30,12 @@ function SDK() {
   const [loading, setLoading] = useState(false);
 
   function resetComponentStates() {
-    //setPreparedCamera({} as OpenCameraState);
+    setPreparedCamera({} as OpenCameraState);
     setShowBoxCamera(false);
     setLoading(false);
   }
 
   const urlPathModels = `${window.location.protocol}//${window.location.host}/models`;
-
-  const config = new UnicoConfig()
-  
-
-  
-  .setHostname("your_hostname")
-  
-  .setHostKey("your_SDKKEY");
 
   const unicoTheme = new UnicoThemeBuilder()
     .setColorSilhouetteSuccess("#69c62f")
@@ -81,12 +73,15 @@ function SDK() {
         `);
         resetComponentStates();
       },
-      
+      support: function (error: SupportPictureResponse) {
+        console.log(error);
+        resetComponentStates();
+      }
     }
   };
 
   const prepareSelfieCamera = async (
-    jsonPath: string | UnicoConfig,
+    jsonPath: string,
     cameraType: SelfieCameraType,
     cameraName: string,
     isUnicoCamera: boolean,
@@ -108,7 +103,7 @@ function SDK() {
   }
 
   const prepareDocumentCamera = async (
-    jsonPath: string | UnicoConfig,
+    jsonPath: string,
     cameraType: DocumentCameraType,
     cameraName: string,
     isUnicoCamera: boolean,
@@ -147,7 +142,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareSelfieCamera(
-                  config,
+                  '/services.json',
                   SelfieCameraTypes.NORMAL,
                   'Facetec Liveness',
                   false
@@ -161,7 +156,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareSelfieCamera(
-                  config,
+                  '/services-sem-facetec.json',
                   SelfieCameraTypes.SMART,
                   'Unico Smart',
                   true
@@ -175,7 +170,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareSelfieCamera(
-                  config,
+                  '/services-sem-facetec.json',
                   SelfieCameraTypes.NORMAL,
                   'Unico Normal',
                   true
@@ -189,7 +184,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareSelfieCamera(
-                  config,
+                  '/services-camera-traseira.json',
                   SelfieCameraTypes.SMART,
                   'Unico Traseira Smart',
                   true
@@ -203,7 +198,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareSelfieCamera(
-                  config,
+                  '/services-camera-traseira.json',
                   SelfieCameraTypes.NORMAL,
                   'Unico Traseira Normal',
                   true
@@ -217,7 +212,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareDocumentCamera(
-                  config,
+                  '/services-sem-facetec.json',
                   DocumentCameraTypes.RG_FRENTE,
                   'RG Frente',
                   true
@@ -231,7 +226,7 @@ function SDK() {
               type="button"
               onClick={() => {
                 prepareDocumentCamera(
-                  config,
+                  '/services-sem-facetec.json',
                   DocumentCameraTypes.RG_VERSO,
                   'RG Verso',
                   true
