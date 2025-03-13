@@ -1,92 +1,107 @@
-<p align='center'>
-  <a href='https://unico.io'>
-    <img width='350' src='https://unico.io/wp-content/uploads/2024/05/idcloud-horizontal-color.svg'></img>
+<p align="center">
+  <a href="https://unico.io">
+    <img width="350" src="https://unico.io/wp-content/uploads/2024/05/idcloud-horizontal-color.svg">
   </a>
 </p>
 
-<h1 align='center'>React</h1>
+<h1 align="center">React</h1>
 
-<div align='center'>
+<div align="center">
 
-### 📚 POC de implementação SDK By Client React
+### 📚 POC de implementação do SDK By Client React
 
 </div>
 
+---
+
 ## 💻 Compatibilidade
 
-### Versões mínimas
+### 📌 Versões Mínimas
 
-- O componente de captura disponibilizado por meio do SDK Web dá suporte às versões igual ou superiores para as tecnologias:
+O componente de captura do SDK Web é compatível com as seguintes versões mínimas:
 
-- Android: 5.0 (API 21);
+- **Android:** 5.0 (API 21);
+- **iOS:** 11;
+- **React:** Versão 16 ou superior (recomendado).
 
-- iOS: 11
+### 📱 Dispositivos Compatíveis
 
-- React recomendado versão 16 ou superior
+Confira os aparelhos testados em nossos laboratórios nesta [lista de dispositivos](https://devcenter.unico.io/idcloud/integracao/integracao-by-unico/visao-geral#dispositivos-compativeis).
 
-### Dispositivos compatíveis
+---
 
-- Você pode conferior os aparelhos testados em nossos laboratórios <a href='https://devcenter.unico.io/idcloud/integracao/integracao-by-unico/visao-geral#dispositivos-compativeis'>nesta</a> lista de dispositivos.
+## ✨ Como Começar
 
-## ✨ Como começar
+Para utilizar os nossos SDKs, você deve importar as credenciais Unico (Client SDK Key) em seu projeto.
 
-Para utilizar nossos SDKs, você deve importar as credenciais unico (Client SDK Key) em seu projeto.
+### 🔧 Instalação
 
-### Instalação:
+O SDK Web está disponível via pacote NPM ou CDN. Siga os passos abaixo conforme sua preferência:
 
-O SDK Web é disponibilizado através de um pacote npm ou cdn. Para a instalação, siga os passos abaixo de acordo com sua preferência:
+#### Via NPM
 
-Instalação através do pacote NPM​
-
-Para instalar o SDK em seu projeto através do npm, basta executar o comando abaixo:
+Para instalar o SDK em seu projeto com npm, execute:
 
 ```- npm install unico-webframe```
 
-Ou pelo yarn, com o comando abaixo:
+Ou, se preferir o Yarn:
 
 ```- yarn add unico-webframe```
 
-## Importação
+---
 
-Após a instalação dO SDK, basta importa-lo da maneira correta em seu projeto.
+## 📥 Importação
 
-Caso tenha instalado o pacote através do npm:
+Após instalar o SDK, importe-o corretamente em seu projeto:
 
-```import { UnicoCheckBuilder, SelfieCameraTypes, UnicoThemeBuilder, DocumentCameraTypes, UnicoConfig, LocaleTypes } from 'unico-webframe'```
+- **Se instalado via NPM:**
 
-Caso tenha instalado o pacote através do npm:
+  ```javascript
+  import { UnicoCheckBuilder, SelfieCameraTypes, UnicoThemeBuilder, DocumentCameraTypes, UnicoConfig, LocaleTypes } from 'unico-webframe'
+  ```
 
-```import { UnicoCheckBuilder, SelfieCameraTypes, UnicoThemeBuilder, DocumentCameraTypes, UnicoConfig, LocaleTypes } from 'UnicoCheckBuilder.min.js'```
+- **Se instalado via CDN:**
 
-## Inicializar o SDK
+  ```javascript
+  import { UnicoCheckBuilder, SelfieCameraTypes, UnicoThemeBuilder, DocumentCameraTypes, UnicoConfig, LocaleTypes } from 'UnicoCheckBuilder.min.js'
+  ```
 
-Para começar, você deve efetuar 3 passos simples em seu projeto:
+---
 
-Instancie um novo Builder:
+## 🚀 Inicializando o SDK
 
-```const unicoCameraBuilder = new UnicoCheckBuilder();```
+Para iniciar, siga os 3 passos abaixo:
 
-Especifique o caminho dos arquivos adicionais (caso adicionados em seu projeto):
+1. **Instancie um novo Builder:**
 
-```unicoCameraBuilder.setResourceDirectory("/resources");```
+   ```javascript
+   const unicoCameraBuilder = new UnicoCheckBuilder();
+   ```
 
-Especifique o caminho dos arquivos dos modelos de IA, caso utilize a funcionalidade de Câmera Inteligente
+2. **Defina o caminho dos arquivos adicionais (se houver):**
 
-```unicoCameraBuilder.setModelsPath("https://meusite.com.br/models");```
+   ```javascript
+   unicoCameraBuilder.setResourceDirectory("/resources");
+   ```
 
-## Configuração de ambientes
+3. **Configure o caminho dos modelos de IA (caso use a funcionalidade de Câmera Inteligente):**
 
-Caso não seja configurado, por padrão o SDK Web utiliza o ambiente de produção.
+   ```javascript
+   unicoCameraBuilder.setModelsPath("https://meusite.com.br/models");
+   ```
 
-É possível configurar o ambiente que será utilizado na execução da SDK. Utilize o enumerado SDKEnvironmentTypes que contém os seguintes enumerados:
+---
 
-```SDKEnvironmentTypes.PROD:``` para ambiente de Produção;
+## 🌐 Configuração de Ambientes
 
-```SDKEnvironmentTypes.UAT:``` para ambiente de Homologação.
+Por padrão, o SDK Web utiliza o ambiente de produção. Caso seja necessário, você pode alterar o ambiente utilizando o enumerado `SDKEnvironmentTypes`:
 
-Veja como implementar no exemplo abaixo:
+- ```SDKEnvironmentTypes.PROD:``` Ambiente de Produção;
+- ```SDKEnvironmentTypes.UAT:``` Ambiente de Homologação.
 
-```
+Exemplo de implementação:
+
+```javascript
 import {
   ...
   UnicoCheckBuilder,
@@ -97,11 +112,13 @@ import {
 unicoCameraBuilder.setEnvironment(SDKEnvironmentTypes.UAT);
 ```
 
-## Implementar as funções de callback
+---
 
-Um dos objetos que deve ser passado como parâmetro ao método responsável por renderizar o frame de captura é o de callback. Este objeto deverá conter funções de callback para casos de sucesso e erro, como exemplificados abaixo.
+## 🔄 Implementação das Funções de Callback
 
-```
+É necessário passar um objeto de callback ao método que renderiza o frame de captura. Esse objeto deve conter funções para tratar os casos de sucesso e erro, conforme o exemplo:
+
+```javascript
   const callback = {
     on: {
       success: (obj) => {
@@ -110,64 +127,72 @@ Um dos objetos que deve ser passado como parâmetro ao método responsável por 
       },
       error: (error) => {
         console.error(error)
-        //confira na aba "Referências" sobre os erros possíveis
+        // confira na aba "Referências" sobre os erros possíveis
       }
     }
   };
 ```
 
-Este objeto é obrigatório e caso não seja corretamente implementado (contemplando todos os eventos de ```success``` ou ```error```) gera uma exceção, que caso não tratada, é exibida no console do usuário.
+> **⚠️ Observação:** Esse objeto é obrigatório. Se não incluir os eventos `success` e `error`, uma exceção será gerada e, caso não tratada, exibida no console do usuário.
 
-##
+---
 
-### ![Atenção](https://img.shields.io/badge/⚠️%20Atenção-red)
+## ⚠️ Atenção
 
-O atributo encrypted é destinado estritamente ao envio da imagem através das APIs do by Client. Não se deve abrir e serializar esse atributo, pois suas características podem ser alteradas sem aviso prévio. Seu uso deve ser exclusivo nas interações com as APIs para garantir a integridade e segurança dos dados. A Unico não se responsabiliza por quaisquer danos decorrentes dessa prática, uma vez que as modificações podem ocorrer de maneira imprevista.
+- O atributo `encrypted` é destinado **exclusivamente** ao envio da imagem através das APIs do By Client.  
+- **Não abra ou serialize** esse atributo, pois suas características podem ser alteradas sem aviso prévio.  
+- Seu uso deve ocorrer somente em interações com as APIs para garantir a integridade e a segurança dos dados.  
+- A Unico não se responsabiliza por quaisquer danos decorrentes de práticas inadequadas, pois as modificações podem ocorrer de forma imprevista.
 
-Os arquivos base64/encrypted podem sofrer variações de tamanho de acordo com diversas variáveis, dentre elas, a qualidade dos aparelhos e das fotos geradas pelos mesmos e regras de negócio da Unico. Para não encontrar problemas em sua aplicação, não limite em sua lógica de programação ou sua infraestrutura o tamanho da string gerada pela SDK para os arquivos.
+Além disso, os arquivos `base64/encrypted` podem variar de tamanho conforme a qualidade dos dispositivos, as fotos geradas e as regras de negócio da Unico. Para evitar problemas, não limite o tamanho da string gerada pela SDK em sua lógica de programação ou infraestrutura.
 
-## Configurar e iniciar
+---
 
-Para iniciar a câmera com as configurações feitas até aqui, é preciso criar uma instância do builder através do método ```build()```.
+## 🎬 Configurar e Iniciar a Câmera
 
-```const unicoCamera = unicoCameraBuilder.build();```
+Para iniciar a câmera com as configurações realizadas, siga os passos abaixo:
 
-Em seguida, com a câmera "montada", deve-se configurar o modo de captura da câmera.
+1. **Crie uma instância do builder utilizando o método `build()`:**
 
-A preparação da câmera será efetuada a partir do método ```prepareSelfieCamera()```, disponibilizado a partir do builder. Este método recebe 2 parâmetros:
+   ```javascript
+   const unicoCamera = unicoCameraBuilder.build();
+   ```
 
-A classe UnicoConfig obtida neste passo;
+2. **Configure o modo de captura da câmera:**
 
-Modo de câmera desejado, sendo eles:
+   Utilize o método `prepareSelfieCamera()`, que recebe dois parâmetros:
+   
+   - A instância da classe `UnicoConfig`.
+   - O modo desejado:
+     - ```SelfieCameraTypes.NORMAL``` para o modo normal;
+     - ```SelfieCameraTypes.SMART``` para o modo inteligente.
 
-```SelfieCameraTypes.NORMAL``` para o modo de câmera normal;
+   Esse método retorna uma _promise_ que, quando resolvida, fornece um objeto para abrir a câmera através do método `open()`, utilizando o callback definido anteriormente.
 
-```SelfieCameraTypes.SMART``` para o modo de câmera inteligente.
+   **Dica:** Para otimizar, você pode separar as chamadas dos métodos `prepareSelfieCamera()` e `open()`.
 
-Este método gera uma promise que ao ser resolvida, devolve um objeto que é utilizado para efetivamente abrir a câmera através do método ```open```, que recebe como parâmetro as funções de ```callback``` configuradas no passo acima.
+   Caso deseje a captura automática, passe o parâmetro ```Unico.SelfieCameraTypes.SMART``` para o método `prepareSelfieCamera`.
 
-**Observação:** Para otimizar a abertura da câmera é possível separar as chamadas dos métodos prepareSelfieCamera() e open().
+   Para a captura inteligente, lembre-se de carregar os modelos de visão computacional com o método `setModelsPath`, conforme explicado anteriormente.
 
-Caso deseje utilizar a captura automática, passe o parâmetro ```Unico.SelfieCameraTypes.SMART``` para o método ```prepareSelfieCamera```.
+   Exemplo utilizando a classe `UnicoConfig`:
 
-Para a captura inteligente, os modelos de visão computacional também devem ser carregados através do método ```setModelsPath```, conforme explicado no primeiro passo deste guia.
+   ```javascript
+   const config = new UnicoConfig()
+     .setHostname("<YOUR_HOSTNAME>")
+     .setHostKey("<YOUR_HOST_KEY>");
 
-Usando a classe UnicoConfig:
+   unicoCamera.prepareSelfieCamera(
+     config, 
+     SelfieCameraTypes.SMART
+   ).then(cameraOpener => {
+     cameraOpener.open(callback);
+   }).catch(error => {
+     console.error(error);
+     // confira na aba "Referências" sobre os erros possíveis
+   });
+   ```
 
-```
-const config = new UnicoConfig()
-  .setHostname("<YOUR_HOSTNAME>")
-  .setHostKey("<YOUR_HOST_KEY>");
+---
 
-  unicoCamera.prepareSelfieCamera(
-    config, 
-    SelfieCameraTypes.SMART
-  ).then(cameraOpener => {
-    cameraOpener.open(callback);
-  }).catch(error => {
-    console.error(error);
-    // confira na aba "Referências" sobre os erros possíveis
-  });
-```
-
-Finalizada a instalação do SDK, siga para a implementação lendo o material: <a href='https://devcenter.unico.io/idcloud/integracao/sdk/integracao-sdks/sdk-web/guia-de-instalacao'>Guia de instalação</a>
+Após finalizar a instalação e configuração do SDK, consulte o [Guia de Instalação](https://devcenter.unico.io/idcloud/integracao/sdk/integracao-sdks/sdk-web/guia-de-instalacao) para obter mais informações e detalhes complementares.
