@@ -180,7 +180,7 @@ Para iniciar a câmera com as configurações realizadas, siga os passos abaixo:
    ```javascript
    const config = new UnicoConfig()
      .setHostname("<YOUR_HOSTNAME>")
-     .setHostKey("<YOUR_HOST_KEY>");
+     .setHostKey("<YOUR_SDKKEY"");
 
    unicoCamera.prepareSelfieCamera(
      config, 
