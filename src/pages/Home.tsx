@@ -8,7 +8,7 @@ const Home = () => {
     <div className="container mx-auto px-4 py-12">
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          SDK Unico React.js
+          SDK Unico React.ts
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
           Experience fast and secure biometric capture with advanced technology that ensures accurate identity verification.
