@@ -71,7 +71,7 @@ if current_version != site_version:
     subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
     subprocess.run(["git", "add", "package.json"], check=True)
     subprocess.run(["git", "commit", "-m", f"chore: bump {DEPENDENCY} to v{site_version}"], check=True)
-    subprocess.run(["git", "push", "origin", branch], check=True)
+    subprocess.run(["git", "push", "--force", "origin", branch], check=True)
 
     # Create tag
     subprocess.run(["git", "tag", "-a", tag, "-m", f"Release {DEPENDENCY} {site_version} ({release_date})"], check=True)
