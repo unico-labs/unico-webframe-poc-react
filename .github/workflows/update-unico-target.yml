@@ -2,7 +2,7 @@ name: Update Unico SDK in Target Repo
 
 on:
   schedule:
-    - cron: "0 9 * * *"  # Todo dia às 9h UTC
+    - cron: "0 9 */10 * *"   # A cada 10 dias, às 9h UTC
   workflow_dispatch:       # Permite rodar manualmente
 
 jobs:
